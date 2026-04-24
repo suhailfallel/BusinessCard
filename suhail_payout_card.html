@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suhail P.V – Payout</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2740;
+    --navy-mid: #243350;
+    --navy-light: #2e4068;
+    --green: #4ec456;
+    --green-dark: #35a83c;
+    --text-muted: #a0b0c8;
+    --text-light: #d0dcea;
+
+    /* Fluid spacing scale — shrinks on tiny screens, grows on large */
+    --sp-xs:  clamp(6px,  1.5vw, 10px);
+    --sp-sm:  clamp(10px, 2.5vw, 16px);
+    --sp-md:  clamp(16px, 4vw,   28px);
+    --sp-lg:  clamp(24px, 6vw,   44px);
+    --sp-xl:  clamp(32px, 8vw,   56px);
+
+    /* Fluid type scale */
+    --fs-xs:   clamp(9px,  2.2vw, 11px);
+    --fs-sm:   clamp(11px, 2.8vw, 13px);
+    --fs-base: clamp(12px, 3.2vw, 15px);
+    --fs-md:   clamp(14px, 3.8vw, 17px);
+    --fs-lg:   clamp(18px, 5vw,   24px);
+    --fs-xl:   clamp(22px, 6.5vw, 32px);
+
+    /* Fluid avatar */
+    --avatar-size: clamp(60px, 18vw, 84px);
+
+    /* Fluid icon circle */
+    --icon-size: clamp(44px, 12vw, 60px);
+    --icon-svg:  clamp(18px, 5vw,  24px);
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: #0d1520;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(78,196,86,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 100%, rgba(26,39,64,0.6) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: var(--navy);
+    padding: var(--sp-xl) var(--sp-md) var(--sp-lg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 0; right: 0;
+    height: 60px;
+    background: var(--navy);
+    clip-path: ellipse(55% 100% at 50% 0%);
+    z-index: 1;
+  }
+
+  .hero-inner { position: relative; z-index: 2; }
+
+  .hero-check {
+    position: absolute;
+    top: clamp(14px, 4vw, 24px);
+    right: clamp(14px, 4vw, 24px);
+    z-index: 2;
+    opacity: 0.9;
+  }
+  .hero-check svg {
+    width: clamp(30px, 9vw, 44px);
+    height: auto;
+  }
+
+  /* Logo */
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-xs);
+    margin-bottom: var(--sp-xs);
+  }
+  .logo svg {
+    width: clamp(24px, 7vw, 34px);
+    height: clamp(24px, 7vw, 34px);
+  }
+  .logo-text {
+    font-size: var(--fs-xl);
+    font-weight: 900;
+    letter-spacing: -1px;
+    line-height: 1;
+  }
+  .logo-text .pay { color: #fff; }
+  .logo-text .out { color: var(--green); }
+
+  .tagline {
+    color: var(--text-muted);
+    font-size: var(--fs-xs);
+    font-style: italic;
+    letter-spacing: 0.3px;
+    margin-bottom: var(--sp-lg);
+  }
+  .tagline em { color: var(--text-light); font-style: italic; }
+
+  /* Person row */
+  .person {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-sm);
+    margin-bottom: var(--sp-xs);
+  }
+  .person-text { flex: 1; min-width: 0; }
+  .person-name {
+    color: #fff;
+    font-size: var(--fs-lg);
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    line-height: 1.15;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .person-role {
+    color: var(--green);
+    font-size: var(--fs-xs);
+    font-weight: 700;
+    letter-spacing: clamp(0.4px, 0.2vw, 0.8px);
+    text-transform: uppercase;
+    margin-top: clamp(2px, 0.8vw, 5px);
+  }
+
+  .person-photo {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    border-radius: 50%;
+    border: clamp(2px, 0.6vw, 3px) solid var(--green);
+    overflow: hidden;
+    flex-shrink: 0;
+    background: var(--navy-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .person-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+  }
+  .person-photo svg {
+    width: 55%; height: 55%;
+  }
+
+  /* ── Contacts section ── */
+  .contacts {
+    background: #fff;
+    padding: var(--sp-lg) var(--sp-md) var(--sp-md);
+    margin-top: -2px;
+    flex: 1;
+  }
+
+  .section-label {
+    font-size: var(--fs-xs);
+    font-weight: 800;
+    letter-spacing: clamp(1.2px, 0.5vw, 2px);
+    text-transform: uppercase;
+    color: #8a9db8;
+    margin-bottom: var(--sp-sm);
+  }
+
+  /* ── Icon row ── */
+  .contact-icons-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: clamp(4px, 1.5vw, 10px);
+    margin-bottom: var(--sp-md);
+    padding: 4px 0;
+  }
+
+  .contact-icon-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(5px, 1.5vw, 9px);
+    text-decoration: none;
+    flex: 1;
+    min-width: 0;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .contact-icon-circle {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    border-radius: 50%;
+    background: var(--navy);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.15s, background 0.15s;
+    box-shadow: 0 4px 14px rgba(26,39,64,0.18);
+    flex-shrink: 0;
+  }
+  .contact-icon-circle svg {
+    width: var(--icon-svg);
+    height: var(--icon-svg);
+  }
+
+  .contact-icon-btn:active .contact-icon-circle {
+    transform: scale(0.88);
+    background: var(--green);
+  }
+
+  .contact-icon-label {
+    font-size: clamp(8px, 2vw, 10px);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    color: #8a9db8;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, #d8e4f0, transparent);
+    margin: clamp(2px, 1vw, 6px) 0 var(--sp-md);
+  }
+
+  /* ── Locations ── */
+  .locations { margin-bottom: var(--sp-md); }
+
+  .location-card {
+    background: var(--navy);
+    border-radius: clamp(10px, 3vw, 14px);
+    padding: var(--sp-sm) var(--sp-md);
+    margin-bottom: clamp(6px, 2vw, 10px);
+    position: relative;
+    overflow: hidden;
+  }
+  .location-card::after {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: rgba(78,196,86,0.07);
+  }
+
+  .loc-city {
+    color: var(--green);
+    font-size: var(--fs-xs);
+    font-weight: 800;
+    letter-spacing: clamp(1px, 0.5vw, 2px);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: clamp(4px, 1vw, 7px);
+  }
+  .loc-dot {
+    width: clamp(4px, 1.2vw, 6px);
+    height: clamp(4px, 1.2vw, 6px);
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+  }
+  .loc-addr {
+    color: var(--text-muted);
+    font-size: var(--fs-sm);
+    line-height: 1.6;
+    font-weight: 400;
+  }
+
+  /* ── Buttons ── */
+  .cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-xs);
+    background: var(--green);
+    color: #fff;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: var(--fs-md);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    padding: clamp(12px, 3.5vw, 16px);
+    border-radius: clamp(10px, 3vw, 14px);
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: clamp(10px, 3vw, 16px);
+    transition: background 0.18s, transform 0.15s;
+  }
+  .cta-btn svg { width: clamp(14px, 3.5vw, 17px); height: clamp(14px, 3.5vw, 17px); }
+  .cta-btn:active { background: var(--green-dark); transform: scale(0.98); }
+
+  .save-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sp-xs);
+    background: transparent;
+    color: var(--navy);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: var(--fs-base);
+    font-weight: 700;
+    text-decoration: none;
+    padding: clamp(10px, 3vw, 14px);
+    border-radius: clamp(10px, 3vw, 14px);
+    border: 2px solid #d0dcea;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: var(--sp-md);
+    transition: border-color 0.18s, background 0.18s;
+  }
+  .save-btn svg { width: clamp(14px, 3.5vw, 17px); height: clamp(14px, 3.5vw, 17px); }
+  .save-btn:active { border-color: var(--green); background: #f0faf0; }
+
+  /* ── Footer ── */
+  .footer {
+    text-align: center;
+    padding-bottom: clamp(20px, 6vw, 36px);
+  }
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-bottom: 5px;
+  }
+  .footer-logo svg { width: clamp(16px, 4vw, 22px); height: clamp(16px, 4vw, 22px); }
+  .footer-logo-text { font-size: var(--fs-base); font-weight: 800; }
+  .footer-logo-text .pay { color: var(--navy); }
+  .footer-logo-text .out { color: var(--green); }
+  .footer-note { font-size: var(--fs-xs); color: #9aabbf; letter-spacing: 0.2px; }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero     { animation: fadeUp 0.45s ease both; }
+  .contacts { animation: fadeUp 0.45s 0.12s ease both; }
+
+  /* ── Small phones (≤ 360px) ── */
+  @media (max-width: 360px) {
+    .contact-icon-label { display: none; }
+    .person-name { font-size: clamp(15px, 5vw, 19px); }
+  }
+
+  /* ── Tall / large phones (≥ 428px) ── */
+  @media (min-width: 428px) {
+    .page { max-width: 100%; }
+    .contacts { padding-left: clamp(28px, 6vw, 48px); padding-right: clamp(28px, 6vw, 48px); }
+    .hero { padding-left: clamp(28px, 6vw, 48px); padding-right: clamp(28px, 6vw, 48px); }
+  }
+
+  /* ── Tap highlight off ── */
+  a, button { -webkit-tap-highlight-color: transparent; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- HERO / TOP CARD -->
+  <div class="hero">
+    <div class="hero-check">
+      <svg width="44" height="34" viewBox="0 0 44 34" fill="none">
+        <polyline points="2,18 16,30 42,3" stroke="#4ec456" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+    <div class="hero-inner">
+      <div class="logo">
+        <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <rect x="0" y="8" width="13" height="13" rx="2.5" transform="rotate(45 17 8)" fill="white"/>
+          <rect x="0" y="19" width="13" height="13" rx="2.5" transform="rotate(45 17 19)" fill="#4ec456"/>
+        </svg>
+        <div class="logo-text"><span class="pay">Pay</span><span class="out">out</span></div>
+      </div>
+      <div class="tagline">Creating Progressive HR <em>Digitally</em></div>
+      <div class="person">
+        <div class="person-text">
+          <div class="person-name">Suhail P.V</div>
+          <div class="person-role">Engineering Manager</div>
+        </div>
+        <div class="person-photo">
+          <!-- Replace src with actual photo URL or base64 -->
+          <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="16" r="8" fill="#4a6080"/>
+            <path d="M4 38c0-8.8 7.2-16 16-16s16 7.2 16 16" fill="#4a6080"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACTS + DETAILS -->
+  <div class="contacts">
+
+    <div class="section-label">Contact</div>
+    <div class="contact-icons-row">
+
+      <!-- Office Phone -->
+      <a href="tel:+97145298627" class="contact-icon-btn">
+        <div class="contact-icon-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M5 3h4l2 5-2.5 2c1.2 2.4 3 4.2 5.4 5.4L16 13l5 2v4a2 2 0 01-2 2C8.6 21 3 15.4 3 5a2 2 0 012-2z" stroke="#4ec456" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="contact-icon-label">Office</span>
+      </a>
+
+      <!-- Mobile -->
+      <a href="tel:+971523914451" class="contact-icon-btn">
+        <div class="contact-icon-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="6" y="2" width="12" height="20" rx="3" stroke="#4ec456" stroke-width="1.8"/>
+            <line x1="9" y1="18" x2="15" y2="18" stroke="#4ec456" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="contact-icon-label">Mobile</span>
+      </a>
+
+      <!-- WhatsApp -->
+      <a href="https://wa.me/971523914451" target="_blank" class="contact-icon-btn">
+        <div class="contact-icon-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.37 5.07L2 22l5.11-1.34A9.94 9.94 0 0012 22c5.52 0 10-4.48 10-10S17.52 2 12 2z" stroke="#4ec456" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M8.5 9.5c.3-.7.8-1 1.3-1 .2 0 .4 0 .5.02.2.02.4.1.5.4l.7 1.6c.1.2.05.5-.1.7l-.5.6c.5 1 1.4 1.9 2.4 2.4l.6-.5c.2-.15.5-.2.7-.1l1.6.7c.3.1.38.3.4.5.02.1.02.3.02.5 0 .5-.3 1-1 1.3-.6.3-1.5.2-2.7-.4C10.5 15 9 13.5 8.1 11.2c-.6-1.2-.7-2.1-.4-2.7z" stroke="#4ec456" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <span class="contact-icon-label">WhatsApp</span>
+      </a>
+
+      <!-- Email -->
+      <a href="mailto:suhail@ridwaretech.com" class="contact-icon-btn">
+        <div class="contact-icon-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <rect x="2" y="5" width="20" height="14" rx="2.5" stroke="#4ec456" stroke-width="1.8"/>
+            <path d="M2 8l10 7 10-7" stroke="#4ec456" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <span class="contact-icon-label">Email</span>
+      </a>
+
+      <!-- Website -->
+      <a href="https://www.payouthr.com" target="_blank" class="contact-icon-btn">
+        <div class="contact-icon-circle">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="9" stroke="#4ec456" stroke-width="1.8"/>
+            <ellipse cx="12" cy="12" rx="4" ry="9" stroke="#4ec456" stroke-width="1.2"/>
+            <line x1="3" y1="12" x2="21" y2="12" stroke="#4ec456" stroke-width="1.2"/>
+            <path d="M4 8h16M4 16h16" stroke="#4ec456" stroke-width="1.2"/>
+          </svg>
+        </div>
+        <span class="contact-icon-label">Website</span>
+      </a>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Locations -->
+    <div class="section-label">Offices</div>
+    <div class="locations">
+      <div class="location-card">
+        <div class="loc-city"><span class="loc-dot"></span>Dubai</div>
+        <div class="loc-addr">Al Reem Tower – Office No. M12 & M13<br>Al Maktoum Rd – Deira – Riggat Al Buteen – Dubai</div>
+      </div>
+      <div class="location-card">
+        <div class="loc-city"><span class="loc-dot"></span>Sharjah</div>
+        <div class="loc-addr">Block C VL12–103, Sharjah Research Technology<br>and Innovation Park, Sharjah – UAE</div>
+      </div>
+    </div>
+
+    <!-- CTAs -->
+    <a href="https://www.payouthr.com" target="_blank" class="cta-btn">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="white" stroke-width="1.5"/><ellipse cx="8" cy="8" rx="3" ry="6.5" stroke="white" stroke-width="1"/><line x1="1.5" y1="8" x2="14.5" y2="8" stroke="white" stroke-width="1"/></svg>
+      Visit Payout HR
+    </a>
+
+    <a href="mailto:suhail@ridwaretech.com" class="save-btn">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="2" stroke="#1a2740" stroke-width="1.5"/><path d="M5 2v4h6V2" stroke="#1a2740" stroke-width="1.3"/><rect x="5.5" y="8" width="5" height="4" rx="0.5" stroke="#1a2740" stroke-width="1.3"/></svg>
+      Send Email
+    </a>
+
+    <!-- Footer -->
+    <div class="footer">
+      <div class="footer-logo">
+        <svg width="20" height="20" viewBox="0 0 28 28" fill="none">
+          <rect x="7" y="0" width="10" height="10" rx="2" transform="rotate(45 14 7)" fill="#1a2740"/>
+          <rect x="7" y="11" width="10" height="10" rx="2" transform="rotate(45 14 18)" fill="#4ec456"/>
+        </svg>
+        <div class="footer-logo-text"><span class="pay">Pay</span><span class="out">out</span></div>
+      </div>
+      <div class="footer-note">Creating Progressive HR Digitally</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
