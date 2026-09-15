@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#050a14">
+<title>Arthur Boureau – DiXiO</title>
+<meta name="description" content="Arthur Boureau – Business Development Manager at DiXiO. People × Tech × Impact.">
+<meta property="og:title" content="Arthur Boureau – DiXiO">
+<meta property="og:description" content="Business Development Manager at DiXiO">
+<meta property="og:image" content="arthur.jpg">
+<link rel="icon" href="arthur.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #050a14;
+    --card:      rgba(13, 25, 45, 0.72);
+    --card-edge: rgba(72, 130, 220, 0.22);
+    --blue:      #2f8dff;
+    --blue-glow: rgba(47, 141, 255, 0.55);
+    --text:      #f2f6fc;
+    --muted:     #9db0cf;
+
+    --sp-xs:  clamp(6px,  1.5vw, 10px);
+    --sp-sm:  clamp(10px, 2.5vw, 16px);
+    --sp-md:  clamp(16px, 4vw,   26px);
+    --sp-lg:  clamp(24px, 6vw,   40px);
+
+    --fs-xs:   clamp(9px,  2.2vw, 11px);
+    --fs-md:   clamp(15px, 4vw,   18px);
+    --fs-lg:   clamp(18px, 5vw,   24px);
+    --fs-xl:   clamp(28px, 8vw,   40px);
+
+    --avatar: clamp(150px, 46vw, 220px);
+    --icon-size: clamp(56px, 16vw, 72px);
+    --icon-svg:  clamp(22px, 6vw,  28px);
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: 'Nunito Sans', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Ambient backdrop ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 0%, rgba(47,141,255,0.16) 0%, transparent 65%),
+      radial-gradient(ellipse 50% 35% at 100% 55%, rgba(18,99,217,0.14) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 30% at 0% 35%, rgba(18,99,217,0.10) 0%, transparent 70%),
+      linear-gradient(180deg, #071022 0%, var(--bg) 45%, #03070f 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    padding: 0 var(--sp-md) var(--sp-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    padding-top: var(--sp-lg);
+    text-align: center;
+  }
+
+  /* glowing planet-arc top-right */
+  .hero .arc {
+    position: absolute;
+    top: clamp(-260px, -60vw, -180px);
+    right: clamp(-260px, -55vw, -170px);
+    width: clamp(340px, 100vw, 460px);
+    height: clamp(340px, 100vw, 460px);
+    border-radius: 50%;
+    border: 1.5px solid rgba(90,160,255,0.55);
+    box-shadow:
+      0 0 40px rgba(47,141,255,0.35),
+      inset 0 0 60px rgba(47,141,255,0.18);
+    background: radial-gradient(circle at 30% 70%, rgba(47,141,255,0.10), transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--sp-md);
+  }
+
+  /* Wordmark */
+  .brand { text-align: left; }
+  .brand-word {
+    font-weight: 900;
+    font-size: var(--fs-xl);
+    letter-spacing: clamp(2px, 1vw, 5px);
+    line-height: 1;
+    color: #fff;
+  }
+  .brand-word .x { color: var(--blue); }
+  .brand-tag {
+    margin-top: 6px;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: clamp(2px, 0.9vw, 3.5px);
+    color: var(--muted);
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .brand-tag .dot { color: var(--blue); }
+
+  .side-note {
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: clamp(1.5px, 0.6vw, 2.5px);
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .side-note::after {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--blue);
+    margin-top: 8px;
+    opacity: 0.8;
+  }
+  .side-note.right { text-align: right; }
+  .side-note.right::after { margin-left: auto; }
+
+  /* Avatar row with side text */
+  .hero-mid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: var(--sp-xs);
+    margin-bottom: var(--sp-md);
+  }
+  .hero-mid .side-note.left { text-align: left; }
+
+  .avatar {
+    width: var(--avatar);
+    height: var(--avatar);
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(160deg, #6fb4ff 0%, var(--blue) 45%, #0b3f9a 100%);
+    box-shadow:
+      0 0 0 6px rgba(47,141,255,0.12),
+      0 0 60px var(--blue-glow),
+      0 18px 50px rgba(0,0,0,0.55);
+    position: relative;
+  }
+  .avatar::before {
+    content: '';
+    position: absolute;
+    inset: -14px;
+    border-radius: 50%;
+    border: 1px solid rgba(47,141,255,0.25);
+    pointer-events: none;
+  }
+  .avatar img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 30%;
+    display: block;
+    border: 3px solid #050a14;
+    background: #1c2c48;
+  }
+
+  .name {
+    font-size: clamp(30px, 9vw, 44px);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: clamp(6px, 1.5vw, 10px);
+  }
+  .role {
+    font-size: var(--fs-md);
+    font-weight: 600;
+    color: #dbe6f7;
+    line-height: 1.4;
+    padding: 0 var(--sp-sm);
+  }
+  .company {
+    font-size: var(--fs-lg);
+    font-weight: 700;
+    color: #fff;
+    margin-top: clamp(4px, 1vw, 8px);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Save Contact ── */
+  .save-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 16px);
+    margin: var(--sp-md) 0 var(--sp-md);
+    padding: clamp(14px, 4vw, 18px) var(--sp-md);
+    border-radius: 999px;
+    border: 1px solid rgba(160,205,255,0.45);
+    background: linear-gradient(180deg, #4ba3ff 0%, #2483f7 55%, #1466dc 100%);
+    color: #fff;
+    font-family: inherit;
+    font-size: clamp(16px, 4.6vw, 21px);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow:
+      0 0 0 1px rgba(47,141,255,0.25),
+      0 0 34px rgba(47,141,255,0.45),
+      inset 0 1px 0 rgba(255,255,255,0.35);
+    transition: transform 0.15s, filter 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .save-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.22) 50%, transparent 100%);
+    transform: translateX(-120%);
+    transition: transform 0.6s ease;
+  }
+  .save-btn:hover::after { transform: translateX(120%); }
+  .save-btn:active { transform: scale(0.98); filter: brightness(1.05); }
+  .save-btn .ic {
+    width: clamp(36px, 10vw, 46px);
+    height: clamp(36px, 10vw, 46px);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.16);
+    border: 1px solid rgba(255,255,255,0.28);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .save-btn .ic svg { width: 58%; height: 58%; }
+
+  /* ── Quick icon row ── */
+  .quick {
+    display: flex;
+    justify-content: space-between;
+    gap: clamp(4px, 1.5vw, 10px);
+    margin-bottom: var(--sp-md);
+  }
+  .quick a, .quick button {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(8px, 2.2vw, 12px);
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .quick .circle {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 30%, #0f1f3a, #0a1426);
+    border: 1.5px solid rgba(72,140,240,0.7);
+    box-shadow: 0 0 18px rgba(47,141,255,0.22), inset 0 0 12px rgba(47,141,255,0.08);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+  }
+  .quick .circle svg { width: var(--icon-svg); height: var(--icon-svg); }
+  .quick a:active .circle, .quick button:active .circle {
+    transform: scale(0.9);
+    background: var(--blue);
+    box-shadow: 0 0 26px var(--blue-glow);
+  }
+  .quick .lbl {
+    font-size: clamp(12px, 3.4vw, 15px);
+    font-weight: 600;
+    color: #e6edf8;
+    white-space: nowrap;
+  }
+
+  /* ── Detail rows ── */
+  .rows { display: flex; flex-direction: column; gap: clamp(8px, 2.2vw, 12px); margin-bottom: var(--sp-lg); }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 3.5vw, 18px);
+    padding: clamp(14px, 4vw, 20px) clamp(14px, 4vw, 20px);
+    border-radius: clamp(12px, 3.5vw, 16px);
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: #fff;
+    text-decoration: none;
+    font-size: clamp(15px, 4.3vw, 19px);
+    font-weight: 600;
+    transition: border-color 0.15s, background 0.15s, transform 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 0;
+  }
+  .row:active { transform: scale(0.99); border-color: rgba(47,141,255,0.6); background: rgba(19,36,64,0.85); }
+  .row .ri { width: clamp(20px, 5.5vw, 24px); height: clamp(20px, 5.5vw, 24px); flex-shrink: 0; }
+  .row .rt { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chev { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.85; }
+
+  /* ── Let's Connect ── */
+  .connect-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--sp-sm);
+    margin-bottom: var(--sp-sm);
+  }
+  .connect-head h2 {
+    font-size: clamp(18px, 5.4vw, 24px);
+    font-weight: 600;
+    color: #f0f4fb;
+  }
+  .connect-head .kicker {
+    text-align: right;
+    font-size: var(--fs-xs);
+    letter-spacing: clamp(1.2px, 0.5vw, 2px);
+    text-transform: uppercase;
+    color: var(--muted);
+    line-height: 1.6;
+    position: relative;
+    padding-left: 40px;
+  }
+  .connect-head .kicker::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 42%;
+    width: 28px; height: 1px;
+    background: var(--blue);
+  }
+
+  .social {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(8px, 2.5vw, 14px);
+    margin-bottom: clamp(8px, 2.5vw, 14px);
+  }
+  .tile {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 3vw, 14px);
+    padding: clamp(14px, 4vw, 18px) clamp(12px, 3.5vw, 16px);
+    border-radius: clamp(12px, 3.5vw, 16px);
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    color: #fff;
+    text-decoration: none;
+    font-size: clamp(15px, 4.2vw, 18px);
+    font-weight: 600;
+    transition: transform 0.15s, border-color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 0;
+  }
+  .tile:active { transform: scale(0.98); border-color: rgba(47,141,255,0.6); }
+  .tile .badge {
+    width: clamp(30px, 8vw, 36px);
+    height: clamp(30px, 8vw, 36px);
+    border-radius: 7px;
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .tile .badge svg { width: 60%; height: 60%; }
+  .tile .tt { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tile .chev { width: 12px; height: 12px; }
+
+  /* ── Company profile ── */
+  .profile {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 3.5vw, 18px);
+    padding: clamp(16px, 4.5vw, 24px) clamp(14px, 4vw, 20px);
+    border-radius: clamp(14px, 4vw, 18px);
+    background:
+      radial-gradient(ellipse 60% 120% at 100% 100%, rgba(47,141,255,0.22), transparent 60%),
+      var(--card);
+    border: 1px solid var(--card-edge);
+    color: #fff;
+    text-decoration: none;
+    overflow: hidden;
+    margin-bottom: var(--sp-lg);
+    transition: transform 0.15s, border-color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .profile:active { transform: scale(0.99); border-color: rgba(47,141,255,0.6); }
+  .profile::before {
+    content: '';
+    position: absolute;
+    right: -30px; bottom: -70px;
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 40% 40%, rgba(120,180,255,0.35), rgba(47,141,255,0.08) 55%, transparent 70%);
+    filter: blur(2px);
+    pointer-events: none;
+  }
+  .profile .doc {
+    width: clamp(56px, 15vw, 68px);
+    height: clamp(56px, 15vw, 68px);
+    border-radius: 14px;
+    background: rgba(47,141,255,0.14);
+    border: 1px solid rgba(47,141,255,0.35);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .profile .doc svg { width: 50%; height: 50%; }
+  .profile .pt { flex: 1; min-width: 0; position: relative; z-index: 1; }
+  .profile .pt strong { display: block; font-size: clamp(17px, 4.8vw, 21px); font-weight: 600; margin-bottom: 4px; }
+  .profile .pt span { font-size: clamp(12px, 3.4vw, 14px); color: var(--muted); font-weight: 400; }
+  .profile .chev { position: relative; z-index: 1; }
+
+  /* ── NFC line ── */
+  .nfc {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-sm);
+    margin-bottom: var(--sp-lg);
+  }
+  .nfc .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(47,141,255,0.6), transparent); }
+  .nfc .mid {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--blue);
+    font-size: clamp(13px, 3.6vw, 15px);
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+  }
+  .nfc .mid svg { width: clamp(26px, 7vw, 32px); height: clamp(26px, 7vw, 32px); }
+
+  /* ── Footer ── */
+  .footer { text-align: center; padding-bottom: env(safe-area-inset-bottom, 0); }
+  .footer .brand-word { font-size: clamp(22px, 6.5vw, 30px); }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed;
+    left: 50%; bottom: 28px;
+    transform: translate(-50%, 20px);
+    background: #10213b;
+    border: 1px solid rgba(47,141,255,0.5);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 50;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    max-width: calc(100vw - 32px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero      { animation: fadeUp 0.45s ease both; }
+  .save-btn  { animation: fadeUp 0.45s 0.08s ease both; }
+  .quick     { animation: fadeUp 0.45s 0.14s ease both; }
+  .rows      { animation: fadeUp 0.45s 0.20s ease both; }
+  .connect   { animation: fadeUp 0.45s 0.26s ease both; }
+  .nfc, .footer { animation: fadeUp 0.45s 0.32s ease both; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  /* ── Small phones ── */
+  @media (max-width: 360px) {
+    .hero-mid .side-note { display: none; }
+    .hero-mid { grid-template-columns: 1fr; justify-items: center; }
+    .connect-head .kicker { display: none; }
+    .social { grid-template-columns: 1fr; }
+  }
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="arc" aria-hidden="true"></div>
+
+    <div class="hero-top">
+      <div class="brand">
+        <div class="brand-word">Di<span class="x">X</span>iO</div>
+        <div class="brand-tag">People <span class="dot">×</span> Tech <span class="dot">×</span> Impact</div>
+      </div>
+      <div class="side-note right">Building<br>Tomorrow<br>Together</div>
+    </div>
+
+    <div class="hero-mid">
+      <div class="side-note left">Human<br>Expertise<br>for a Smarter<br>Tomorrow</div>
+      <div class="avatar">
+        <img src="arthur.jpg" alt="Arthur Boureau" width="430" height="430">
+      </div>
+      <div class="side-note right">AI<br>Cloud<br>Data<br>People<br>Growth</div>
+    </div>
+
+    <h1 class="name">Arthur Boureau</h1>
+    <p class="role">Business Development Manager</p>
+    <div class="company">DiXiO</div>
+  </header>
+
+  <!-- ── SAVE CONTACT ── -->
+  <a class="save-btn" href="arthur.vcf" download="Arthur-Boureau.vcf">
+    <span class="ic" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="9" cy="8" r="3.5" stroke="#fff" stroke-width="1.8"/>
+        <path d="M2.5 19c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M17.5 9h4M19.5 7v4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </span>
+    Save Contact
+  </a>
+
+  <!-- ── QUICK ACTIONS ── -->
+  <nav class="quick" aria-label="Quick actions">
+    <a href="tel:+33782133029">
+      <span class="circle">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 3h4l2 5-2.5 2c1.2 2.4 3 4.2 5.4 5.4L16 13l5 2v4a2 2 0 01-2 2C8.6 21 3 15.4 3 5a2 2 0 012-2z" fill="#fff"/></svg>
+      </span>
+      <span class="lbl">Call</span>
+    </a>
+    <a href="mailto:aboureau@dixio.me">
+      <span class="circle">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="#fff"/><path d="M3.5 7.5l8.5 6 8.5-6" stroke="#0a1426" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="lbl">Email</span>
+    </a>
+    <a href="https://dixio.cloud" target="_blank" rel="noopener">
+      <span class="circle">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="2"/><ellipse cx="12" cy="12" rx="3.8" ry="9" stroke="#fff" stroke-width="1.6"/><path d="M3 12h18M4.5 8h15M4.5 16h15" stroke="#fff" stroke-width="1.6"/></svg>
+      </span>
+      <span class="lbl">Website</span>
+    </a>
+    <button type="button" id="shareBtn">
+      <span class="circle">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5" r="3" fill="#fff"/><circle cx="6" cy="12" r="3" fill="#fff"/><circle cx="18" cy="19" r="3" fill="#fff"/><path d="M8.6 10.7l6.8-4M8.6 13.3l6.8 4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </span>
+      <span class="lbl">Share</span>
+    </button>
+  </nav>
+
+  <!-- ── DETAIL ROWS ── -->
+  <div class="rows">
+    <a class="row" href="tel:+33782133029">
+      <svg class="ri" viewBox="0 0 24 24" fill="none"><path d="M5 3h4l2 5-2.5 2c1.2 2.4 3 4.2 5.4 5.4L16 13l5 2v4a2 2 0 01-2 2C8.6 21 3 15.4 3 5a2 2 0 012-2z" fill="#3f96ff"/></svg>
+      <span class="rt">+33 7 82 13 30 29</span>
+      <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#3f96ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="row" href="mailto:aboureau@dixio.me">
+      <svg class="ri" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="#3f96ff"/><path d="M3.5 7.5l8.5 6 8.5-6" stroke="#0a1426" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="rt">aboureau@dixio.me</span>
+      <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#3f96ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="row" href="https://dixio.cloud" target="_blank" rel="noopener">
+      <svg class="ri" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#3f96ff" stroke-width="2"/><ellipse cx="12" cy="12" rx="3.8" ry="9" stroke="#3f96ff" stroke-width="1.6"/><path d="M3 12h18M4.5 8h15M4.5 16h15" stroke="#3f96ff" stroke-width="1.6"/></svg>
+      <span class="rt">dixio.cloud</span>
+      <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#3f96ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <!-- ── LET'S CONNECT ── -->
+  <section class="connect">
+    <div class="connect-head">
+      <h2>Let&rsquo;s Connect</h2>
+      <div class="kicker">Same ideas<br>Bigger possibilities</div>
+    </div>
+
+    <div class="social">
+      <a class="tile" href="https://www.linkedin.com/company/dixio-experts/" target="_blank" rel="noopener">
+        <span class="badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path fill="#0a1426" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.2 8h4.6v14H.2V8zm7.4 0h4.4v1.9h.06c.61-1.16 2.1-2.38 4.33-2.38 4.63 0 5.49 3.05 5.49 7.02V22h-4.6v-6.6c0-1.58-.03-3.6-2.2-3.6-2.2 0-2.54 1.72-2.54 3.49V22H7.6V8z"/></svg>
+        </span>
+        <span class="tt">LinkedIn</span>
+        <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#3f96ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="tile" href="https://www.youtube.com/@dixio6031/featured" target="_blank" rel="noopener">
+        <span class="badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path fill="#0a1426" d="M23.5 6.2a3 3 0 00-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 00.5 6.2 31 31 0 000 12a31 31 0 00.5 5.8 3 3 0 002.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 002.1-2.1A31 31 0 0024 12a31 31 0 00-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+        </span>
+        <span class="tt">YouTube</span>
+        <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#3f96ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+    <a class="profile" href="https://canva.link/xay6mp0n3stnvki" target="_blank" rel="noopener">
+      <span class="doc" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M6 2h8l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z" fill="#3f96ff"/><path d="M14 2v5h5" fill="#8ec2ff"/><path d="M8 12h8M8 15.5h8M8 19h5" stroke="#0a1426" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </span>
+      <span class="pt">
+        <strong>View Company Profile</strong>
+        <span>Discover how DiXiO creates impact</span>
+      </span>
+      <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#3f96ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </section>
+
+  <!-- ── NFC ── -->
+  <div class="nfc" aria-hidden="true">
+    <div class="line"></div>
+    <div class="mid">
+      <svg viewBox="0 0 32 32" fill="none">
+        <path d="M11 9c3.5 4 3.5 10 0 14" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M16 5c6 6.5 6 15.5 0 22" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M6 13c1.5 2 1.5 4 0 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
+      </svg>
+      Tap or Scan to Connect
+    </div>
+    <div class="line"></div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="brand-word">Di<span class="x">X</span>iO</div>
+    <div class="brand-tag">People <span class="dot">×</span> Tech <span class="dot">×</span> Impact</div>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Link copied</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('shareBtn');
+    var toast = document.getElementById('toast');
+    var data = {
+      title: 'Arthur Boureau – DiXiO',
+      text: 'Arthur Boureau · Business Development Manager at DiXiO',
+      url: location.href
+    };
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(showToast.t);
+      showToast.t = setTimeout(function () { toast.classList.remove('show'); }, 1800);
+    }
+    function copy() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(data.url).then(function () { showToast('Link copied'); },
+          function () { showToast(data.url); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = data.url; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); showToast('Link copied'); } catch (e) { showToast(data.url); }
+        document.body.removeChild(ta);
+      }
+    }
+    btn.addEventListener('click', function () {
+      if (navigator.share) {
+        navigator.share(data).catch(function (e) { if (e && e.name !== 'AbortError') copy(); });
+      } else {
+        copy();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
