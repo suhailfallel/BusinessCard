@@ -316,23 +316,6 @@
     font-weight: 600;
     color: #f0f4fb;
   }
-  .connect-head .kicker {
-    text-align: right;
-    font-size: var(--fs-xs);
-    letter-spacing: clamp(1.2px, 0.5vw, 2px);
-    text-transform: uppercase;
-    color: var(--muted);
-    line-height: 1.6;
-    position: relative;
-    padding-left: 40px;
-  }
-  .connect-head .kicker::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 42%;
-    width: 28px; height: 1px;
-    background: var(--blue);
-  }
 
   .social {
     display: grid;
@@ -458,7 +441,6 @@
 
   /* ── Small phones ── */
   @media (max-width: 360px) {
-    .connect-head .kicker { display: none; }
     .social { grid-template-columns: 1fr; }
   }
 
@@ -553,7 +535,6 @@
   <section class="connect">
     <div class="connect-head">
       <h2>Let&rsquo;s Connect</h2>
-      <div class="kicker">Same ideas<br>Bigger possibilities</div>
     </div>
 
     <div class="social">
