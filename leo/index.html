@@ -370,7 +370,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: clamp(8px, 2.5vw, 14px);
-    margin-bottom: clamp(8px, 2.5vw, 14px);
+    margin-bottom: var(--sp-lg);
   }
   .tile {
     display: flex;
@@ -401,68 +401,6 @@
   .tile .tt { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .tile .chev { width: 12px; height: 12px; }
 
-  /* ── Company profile ── */
-  .profile {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: clamp(12px, 3.5vw, 18px);
-    padding: clamp(16px, 4.5vw, 24px) clamp(14px, 4vw, 20px);
-    border-radius: clamp(14px, 4vw, 18px);
-    background:
-      radial-gradient(ellipse 60% 120% at 100% 100%, rgba(47,141,255,0.22), transparent 60%),
-      var(--card);
-    border: 1px solid var(--card-edge);
-    color: #fff;
-    text-decoration: none;
-    overflow: hidden;
-    margin-bottom: var(--sp-lg);
-    transition: transform 0.15s, border-color 0.15s;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .profile:active { transform: scale(0.99); border-color: rgba(47,141,255,0.6); }
-  .profile::before {
-    content: '';
-    position: absolute;
-    right: -30px; bottom: -70px;
-    width: 180px; height: 180px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 40% 40%, rgba(120,180,255,0.35), rgba(47,141,255,0.08) 55%, transparent 70%);
-    filter: blur(2px);
-    pointer-events: none;
-  }
-  .profile .doc {
-    width: clamp(56px, 15vw, 68px);
-    height: clamp(56px, 15vw, 68px);
-    border-radius: 14px;
-    background: rgba(47,141,255,0.14);
-    border: 1px solid rgba(47,141,255,0.35);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  .profile .doc svg { width: 50%; height: 50%; }
-  .profile .pt { flex: 1; min-width: 0; position: relative; z-index: 1; }
-  .profile .pt strong { display: block; font-size: clamp(17px, 4.8vw, 21px); font-weight: 600; margin-bottom: 4px; }
-  .profile .pt span { font-size: clamp(12px, 3.4vw, 14px); color: var(--muted); font-weight: 400; }
-  .profile .chev { position: relative; z-index: 1; }
-
-  /* ── NFC line ── */
-  .nfc {
-    display: flex;
-    align-items: center;
-    gap: var(--sp-sm);
-    margin-bottom: var(--sp-lg);
-  }
-  .nfc .line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(47,141,255,0.6), transparent); }
-  .nfc .mid {
-    display: flex; align-items: center; gap: 12px;
-    color: var(--blue);
-    font-size: clamp(13px, 3.6vw, 15px);
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    white-space: nowrap;
-  }
-  .nfc .mid svg { width: clamp(26px, 7vw, 32px); height: clamp(26px, 7vw, 32px); }
 
   /* ── Footer ── */
   .footer { text-align: center; padding-bottom: env(safe-area-inset-bottom, 0); }
@@ -502,7 +440,7 @@
   .quick     { animation: fadeUp 0.45s 0.14s ease both; }
   .rows      { animation: fadeUp 0.45s 0.20s ease both; }
   .connect   { animation: fadeUp 0.45s 0.26s ease both; }
-  .nfc, .footer { animation: fadeUp 0.45s 0.32s ease both; }
+  .footer { animation: fadeUp 0.45s 0.32s ease both; }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
 
   /* ── Small phones ── */
@@ -628,31 +566,8 @@
       </a>
     </div>
 
-    <a class="profile" href="https://canva.link/xay6mp0n3stnvki" target="_blank" rel="noopener">
-      <span class="doc" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none"><path d="M6 2h8l5 5v13a2 2 0 01-2 2H6a2 2 0 01-2-2V4a2 2 0 012-2z" fill="#3f96ff"/><path d="M14 2v5h5" fill="#8ec2ff"/><path d="M8 12h8M8 15.5h8M8 19h5" stroke="#0a1426" stroke-width="1.6" stroke-linecap="round"/></svg>
-      </span>
-      <span class="pt">
-        <strong>View Company Profile</strong>
-        <span>Discover how DiXiO creates impact</span>
-      </span>
-      <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#3f96ff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
   </section>
 
-  <!-- ── NFC ── -->
-  <div class="nfc" aria-hidden="true">
-    <div class="line"></div>
-    <div class="mid">
-      <svg viewBox="0 0 32 32" fill="none">
-        <path d="M11 9c3.5 4 3.5 10 0 14" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
-        <path d="M16 5c6 6.5 6 15.5 0 22" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
-        <path d="M6 13c1.5 2 1.5 4 0 6" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/>
-      </svg>
-      Tap or Scan to Connect
-    </div>
-    <div class="line"></div>
-  </div>
 
   <!-- ── FOOTER ── -->
   <footer class="footer">
