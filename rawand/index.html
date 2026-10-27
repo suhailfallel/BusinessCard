@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#121212">
+<title>Rawand Hijazi – Nusuk Development</title>
+<meta name="description" content="Rawand Hijazi – Administration Officer at Nusuk Real Estate Development LLC.">
+<meta property="og:title" content="Rawand Hijazi – Nusuk Development">
+<meta property="og:description" content="Administration Officer at Nusuk Real Estate Development LLC">
+<meta property="og:image" content="rawand.jpg">
+<link rel="icon" href="rawand.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:        #121212;
+    --card:      #1d1d1d;
+    --card-edge: rgba(255,255,255,0.09);
+    --line:      rgba(255,255,255,0.14);
+    --text:      #ffffff;
+    --muted:     #a9a9a9;
+
+    --sp-xs:  clamp(6px,  1.5vw, 10px);
+    --sp-sm:  clamp(10px, 2.5vw, 16px);
+    --sp-md:  clamp(16px, 4vw,   26px);
+    --sp-lg:  clamp(24px, 6vw,   40px);
+
+    --fs-xs:   clamp(9px,  2.2vw, 11px);
+    --fs-md:   clamp(14px, 3.8vw, 17px);
+    --fs-lg:   clamp(18px, 5vw,   24px);
+
+    --avatar: clamp(150px, 46vw, 220px);
+    --icon-size: clamp(56px, 16vw, 72px);
+    --icon-svg:  clamp(22px, 6vw,  28px);
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: 'Poppins', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── Backdrop: soft vignette ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 45% at 50% 0%, rgba(255,255,255,0.05) 0%, transparent 70%),
+      linear-gradient(180deg, #171717 0%, var(--bg) 50%, #0c0c0c 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    padding: 0 var(--sp-md) var(--sp-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── Swirl lines (from the printed card) ── */
+  .swirl {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.9;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    position: relative;
+    z-index: 1;
+    padding-top: var(--sp-lg);
+    text-align: center;
+  }
+
+  .brand { display: block; line-height: 0; margin: 0 auto var(--sp-lg); width: fit-content; }
+  .brand img {
+    width: clamp(110px, 32vw, 150px);
+    height: auto;
+    display: block;
+  }
+  .footer .brand { margin: 0 auto; }
+  .footer .brand img { width: clamp(90px, 26vw, 120px); }
+
+  .hero-mid {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--sp-md);
+  }
+
+  .avatar {
+    width: var(--avatar);
+    height: var(--avatar);
+    border-radius: 50%;
+    padding: 4px;
+    background: linear-gradient(160deg, #ffffff 0%, #bdbdbd 60%, #7a7a7a 100%);
+    box-shadow:
+      0 0 0 8px rgba(255,255,255,0.05),
+      0 18px 50px rgba(0,0,0,0.7);
+    position: relative;
+  }
+  .avatar::before {
+    content: '';
+    position: absolute;
+    inset: -16px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.12);
+    pointer-events: none;
+  }
+  .avatar img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: 50% 25%;
+    display: block;
+    border: 3px solid var(--bg);
+    background: #2a2a2a;
+  }
+
+  .name {
+    font-size: clamp(28px, 8.4vw, 40px);
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: clamp(8px, 2vw, 12px);
+  }
+  .name-rule {
+    width: clamp(90px, 28vw, 140px);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #fff, transparent);
+    margin: 0 auto clamp(8px, 2vw, 12px);
+    opacity: 0.8;
+  }
+  .role {
+    font-size: var(--fs-md);
+    font-weight: 400;
+    color: #e4e4e4;
+    line-height: 1.4;
+    padding: 0 var(--sp-sm);
+  }
+  .company {
+    font-size: clamp(13px, 3.5vw, 15px);
+    font-weight: 500;
+    color: var(--muted);
+    margin-top: clamp(4px, 1vw, 8px);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+  }
+
+  /* ── Save Contact ── */
+  .save-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(10px, 3vw, 16px);
+    margin: var(--sp-md) 0 var(--sp-md);
+    padding: clamp(14px, 4vw, 18px) var(--sp-md);
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.6);
+    background: linear-gradient(180deg, #ffffff 0%, #ededed 100%);
+    color: #111;
+    font-family: inherit;
+    font-size: clamp(16px, 4.6vw, 20px);
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow:
+      0 0 30px rgba(255,255,255,0.12),
+      0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.15s, filter 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  .save-btn:active { transform: scale(0.98); filter: brightness(0.96); }
+  .save-btn .ic {
+    width: clamp(36px, 10vw, 46px);
+    height: clamp(36px, 10vw, 46px);
+    border-radius: 12px;
+    background: #111;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .save-btn .ic svg { width: 58%; height: 58%; }
+
+  /* ── Quick icon row ── */
+  .quick {
+    display: flex;
+    justify-content: space-between;
+    gap: clamp(4px, 1.5vw, 10px);
+    margin-bottom: var(--sp-md);
+  }
+  .quick a, .quick button {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(8px, 2.2vw, 12px);
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .quick .circle {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    border-radius: 50%;
+    background: var(--card);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+    display: flex; align-items: center; justify-content: center;
+    transition: transform 0.15s, background 0.15s, border-color 0.15s;
+  }
+  .quick .circle svg { width: var(--icon-svg); height: var(--icon-svg); }
+  .quick a:active .circle, .quick button:active .circle {
+    transform: scale(0.9);
+    background: #fff;
+    border-color: #fff;
+  }
+  .quick a:active .circle svg *, .quick button:active .circle svg * { fill: #111; stroke: #111; }
+  .quick a:active .circle svg [data-keep], .quick button:active .circle svg [data-keep] { fill: #fff; stroke: #fff; }
+  .quick .lbl {
+    font-size: clamp(12px, 3.4vw, 14px);
+    font-weight: 500;
+    color: #e6e6e6;
+    white-space: nowrap;
+  }
+
+  /* ── Detail rows ── */
+  .rows { display: flex; flex-direction: column; gap: clamp(8px, 2.2vw, 12px); margin-bottom: var(--sp-lg); }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: clamp(12px, 3.5vw, 18px);
+    padding: clamp(14px, 4vw, 20px) clamp(14px, 4vw, 20px);
+    border-radius: clamp(12px, 3.5vw, 16px);
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    color: #fff;
+    text-decoration: none;
+    font-size: clamp(15px, 4.2vw, 18px);
+    font-weight: 500;
+    transition: border-color 0.15s, background 0.15s, transform 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 0;
+  }
+  .row:active { transform: scale(0.99); border-color: rgba(255,255,255,0.4); background: #262626; }
+  .row .ri { width: clamp(20px, 5.5vw, 24px); height: clamp(20px, 5.5vw, 24px); flex-shrink: 0; }
+  .row .rt { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chev { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.8; }
+
+  /* ── Let's Connect ── */
+  .connect-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--sp-sm);
+    margin-bottom: var(--sp-sm);
+  }
+  .connect-head h2 {
+    font-size: clamp(18px, 5.2vw, 23px);
+    font-weight: 600;
+    color: #fff;
+  }
+
+  .social {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(8px, 2.5vw, 14px);
+    margin-bottom: var(--sp-lg);
+  }
+  .tile {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 3vw, 14px);
+    padding: clamp(14px, 4vw, 18px) clamp(12px, 3.5vw, 16px);
+    border-radius: clamp(12px, 3.5vw, 16px);
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    color: #fff;
+    text-decoration: none;
+    font-size: clamp(15px, 4.2vw, 17px);
+    font-weight: 500;
+    transition: transform 0.15s, border-color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 0;
+  }
+  .tile:active { transform: scale(0.98); border-color: rgba(255,255,255,0.4); }
+  .tile .badge {
+    width: clamp(30px, 8vw, 36px);
+    height: clamp(30px, 8vw, 36px);
+    border-radius: 8px;
+    background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .tile .badge svg { width: 62%; height: 62%; }
+  .tile .tt { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tile .chev { width: 12px; height: 12px; }
+
+  /* ── Footer ── */
+  .footer { text-align: center; padding-bottom: env(safe-area-inset-bottom, 0); position: relative; z-index: 1; }
+  .footer-site {
+    margin-top: var(--sp-sm);
+    font-size: clamp(12px, 3.2vw, 14px);
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed;
+    left: 50%; bottom: 28px;
+    transform: translate(-50%, 20px);
+    background: #fff;
+    color: #111;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 50;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    max-width: calc(100vw - 32px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ── Animations ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero      { animation: fadeUp 0.45s ease both; }
+  .save-btn  { animation: fadeUp 0.45s 0.08s ease both; }
+  .quick     { animation: fadeUp 0.45s 0.14s ease both; }
+  .rows      { animation: fadeUp 0.45s 0.20s ease both; }
+  .connect   { animation: fadeUp 0.45s 0.26s ease both; }
+  .footer    { animation: fadeUp 0.45s 0.32s ease both; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  /* ── Small phones ── */
+  @media (max-width: 430px) {
+    .social { grid-template-columns: 1fr; }
+  }
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- decorative swirl lines, echoing the printed card -->
+  <svg class="swirl" viewBox="0 0 480 900" fill="none" aria-hidden="true" preserveAspectRatio="xMidYMin slice">
+    <path d="M-40 250 C 60 120, 200 140, 240 230 C 280 320, 170 360, 150 290 C 130 220, 230 190, 300 220 C 400 260, 470 330, 540 420" stroke="#ffffff" stroke-opacity="0.10" stroke-width="1.6"/>
+    <path d="M520 150 C 440 90, 330 110, 320 190 C 310 260, 420 270, 420 200 C 420 150, 330 140, 280 170 C 180 230, 80 300, -40 330" stroke="#ffffff" stroke-opacity="0.06" stroke-width="1.4"/>
+    <path d="M-40 760 C 80 700, 180 720, 260 800 C 320 860, 400 860, 540 790" stroke="#ffffff" stroke-opacity="0.07" stroke-width="1.4"/>
+  </svg>
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <a class="brand" href="https://www.nusuk.ae" target="_blank" rel="noopener">
+      <img src="../assets/nusuk-logo.png" alt="Nusuk Development">
+    </a>
+
+    <div class="hero-mid">
+      <div class="avatar">
+        <img src="rawand.jpg" alt="Rawand Hijazi" width="640" height="640">
+      </div>
+    </div>
+
+    <h1 class="name">Rawand Hijazi</h1>
+    <div class="name-rule"></div>
+    <p class="role">Administration Officer</p>
+    <div class="company">Nusuk Real Estate Development</div>
+  </header>
+
+  <!-- ── SAVE CONTACT ── -->
+  <a class="save-btn" href="rawand.vcf" download="Rawand-Hijazi.vcf">
+    <span class="ic" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none">
+        <circle cx="9" cy="8" r="3.5" stroke="#fff" stroke-width="1.8"/>
+        <path d="M2.5 19c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M17.5 9h4M19.5 7v4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </span>
+    Save Contact
+  </a>
+
+  <!-- ── QUICK ACTIONS ── -->
+  <nav class="quick" aria-label="Quick actions">
+    <a href="tel:+971566533734">
+      <span class="circle">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M5 3h4l2 5-2.5 2c1.2 2.4 3 4.2 5.4 5.4L16 13l5 2v4a2 2 0 01-2 2C8.6 21 3 15.4 3 5a2 2 0 012-2z" fill="#fff"/></svg>
+      </span>
+      <span class="lbl">Call</span>
+    </a>
+    <a href="https://wa.me/971566533734" target="_blank" rel="noopener">
+      <span class="circle">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2.2a9.8 9.8 0 00-8.4 14.8L2.2 21.8l4.9-1.3A9.8 9.8 0 1012 2.2z" fill="#fff"/><path d="M8.6 7.6c.2-.5.5-.5.8-.5h.6c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.4 0 .6l-.6.8c-.1.2-.2.3 0 .6.5.9 1.3 1.8 2.2 2.4.3.2.5.3.7.1l.8-.7c.2-.2.4-.2.6-.1l1.9.9c.3.1.4.3.4.5-.1.6-.3 1.3-.8 1.6-.6.4-1.3.6-2.1.4-2.3-.6-4.4-2.4-5.6-4.5-.6-1-.9-2.1-.8-3.2 0-.5.2-.9.5-1.3z" fill="#1d1d1d" data-keep=""/></svg>
+      </span>
+      <span class="lbl">WhatsApp</span>
+    </a>
+    <a href="mailto:admin@nusuk.ae">
+      <span class="circle">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="#fff"/><path d="M3.5 7.5l8.5 6 8.5-6" stroke="#1d1d1d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" data-keep=""/></svg>
+      </span>
+      <span class="lbl">Email</span>
+    </a>
+    <a href="https://www.nusuk.ae" target="_blank" rel="noopener">
+      <span class="circle">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="2"/><ellipse cx="12" cy="12" rx="3.8" ry="9" stroke="#fff" stroke-width="1.6"/><path d="M3 12h18M4.5 8h15M4.5 16h15" stroke="#fff" stroke-width="1.6"/></svg>
+      </span>
+      <span class="lbl">Website</span>
+    </a>
+    <button type="button" id="shareBtn">
+      <span class="circle">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5" r="3" fill="#fff"/><circle cx="6" cy="12" r="3" fill="#fff"/><circle cx="18" cy="19" r="3" fill="#fff"/><path d="M8.6 10.7l6.8-4M8.6 13.3l6.8 4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+      </span>
+      <span class="lbl">Share</span>
+    </button>
+  </nav>
+
+  <!-- ── DETAIL ROWS ── -->
+  <div class="rows">
+    <a class="row" href="tel:+971566533734">
+      <svg class="ri" viewBox="0 0 24 24" fill="none"><path d="M5 3h4l2 5-2.5 2c1.2 2.4 3 4.2 5.4 5.4L16 13l5 2v4a2 2 0 01-2 2C8.6 21 3 15.4 3 5a2 2 0 012-2z" fill="#fff"/></svg>
+      <span class="rt">+971 56 653 3734</span>
+      <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="row" href="mailto:admin@nusuk.ae">
+      <svg class="ri" viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="#fff"/><path d="M3.5 7.5l8.5 6 8.5-6" stroke="#1d1d1d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="rt">admin@nusuk.ae</span>
+      <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <a class="row" href="https://www.nusuk.ae" target="_blank" rel="noopener">
+      <svg class="ri" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="2"/><ellipse cx="12" cy="12" rx="3.8" ry="9" stroke="#fff" stroke-width="1.6"/><path d="M3 12h18M4.5 8h15M4.5 16h15" stroke="#fff" stroke-width="1.6"/></svg>
+      <span class="rt">www.nusuk.ae</span>
+      <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+
+  <!-- ── LET'S CONNECT ── -->
+  <section class="connect">
+    <div class="connect-head">
+      <h2>Let&rsquo;s Connect</h2>
+    </div>
+
+    <div class="social">
+      <a class="tile" href="https://www.instagram.com/nusukdevelopment/" target="_blank" rel="noopener">
+        <span class="badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#111" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="#111" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.3" fill="#111"/></svg>
+        </span>
+        <span class="tt">Instagram</span>
+        <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="tile" href="https://www.facebook.com/nusukdevelopment" target="_blank" rel="noopener">
+        <span class="badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path fill="#111" d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.5 0-4.1 1.5-4.1 4.2v2.3H7.4V14h2.8v8h3.3z"/></svg>
+        </span>
+        <span class="tt">Facebook</span>
+        <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <a class="brand" href="https://www.nusuk.ae" target="_blank" rel="noopener">
+      <img src="../assets/nusuk-logo.png" alt="Nusuk Development">
+    </a>
+    <a class="footer-site" href="https://www.nusuk.ae" target="_blank" rel="noopener">www.nusuk.ae</a>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Link copied</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('shareBtn');
+    var toast = document.getElementById('toast');
+    var data = {
+      title: 'Rawand Hijazi – Nusuk Development',
+      text: 'Rawand Hijazi · Administration Officer at Nusuk Real Estate Development LLC',
+      url: location.href
+    };
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(showToast.t);
+      showToast.t = setTimeout(function () { toast.classList.remove('show'); }, 1800);
+    }
+    function copy() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(data.url).then(function () { showToast('Link copied'); },
+          function () { showToast(data.url); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = data.url; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); showToast('Link copied'); } catch (e) { showToast(data.url); }
+        document.body.removeChild(ta);
+      }
+    }
+    btn.addEventListener('click', function () {
+      if (navigator.share) {
+        navigator.share(data).catch(function (e) { if (e && e.name !== 'AbortError') copy(); });
+      } else {
+        copy();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
