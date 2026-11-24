@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#231f20">
+<title>Riaz Ahmad – Simply Move Transport &amp; Service</title>
+<meta name="description" content="Riaz Ahmad – Fondateur Et Directeur, Simply Move Transport &amp; Service, Fully VS.">
+<meta property="og:title" content="Riaz Ahmad – Simply Move Transport &amp; Service">
+<meta property="og:description" content="Fondateur Et Directeur · Simply Move Transport &amp; Service">
+<meta property="og:image" content="riaz-ahmad.jpg">
+<link rel="icon" href="riaz-ahmad.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:       #231f20;   /* card black */
+    --blue:      #334ea1;   /* name + icon blue */
+    --navy:      #2e3092;   /* ribbon dark end */
+    --sky:       #6ecff6;   /* ribbon light end */
+    --text:      #231f20;
+    --muted:     #5d6577;
+    --line:      #e3e7f0;
+    --page:      #ffffff;
+    --ground:    #eef1f7;
+
+    --sp-sm:  clamp(10px, 2.5vw, 16px);
+    --sp-md:  clamp(16px, 4vw,   26px);
+    --sp-lg:  clamp(24px, 6vw,   40px);
+
+    --photo: clamp(150px, 44vw, 196px);
+    --icon-size: clamp(54px, 15vw, 66px);
+    --icon-svg:  clamp(22px, 6vw,  26px);
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    font-family: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    background: var(--ground);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    background: var(--page);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 0 40px rgba(35,31,32,0.08);
+  }
+
+  /* ── Header: black band, logo, blue ribbon wave (as on the printed card) ── */
+  .top {
+    background: var(--ink);
+    padding: clamp(22px, 6vw, 34px) var(--sp-md) 0;
+    text-align: center;
+  }
+  .top .logo { display: inline-block; line-height: 0; }
+  .top .logo img { width: min(74%, 300px); height: auto; display: inline-block; }
+  .wave { display: block; width: 100%; height: clamp(70px, 20vw, 96px); margin-top: -1px; }
+
+  /* ── Identity ── */
+  .who {
+    position: relative;
+    text-align: center;
+    padding: 0 var(--sp-md);
+    margin-top: calc(var(--photo) * -0.42);
+  }
+  .photo {
+    position: relative;
+    display: inline-block;
+    width: var(--photo);
+    height: var(--photo);
+    margin-bottom: clamp(12px, 3vw, 16px);
+  }
+  .photo img {
+    width: 100%; height: 100%;
+    display: block;
+    object-fit: cover;
+    border-radius: 24px;
+    border: 4px solid #fff;
+    box-shadow: 0 14px 34px rgba(35,31,32,0.22);
+    background: #dfe4ee;
+  }
+  .photo::after {                       /* the blue dot from the card */
+    content: '';
+    position: absolute;
+    right: -10px; bottom: -10px;
+    width: clamp(26px, 7vw, 32px);
+    height: clamp(26px, 7vw, 32px);
+    border-radius: 50%;
+    background: var(--blue);
+    border: 4px solid #fff;
+  }
+  .name {
+    font-family: 'Montserrat', 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: min(calc((100vw - 52px) / 7.45), 34px);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--blue);
+    line-height: 1.15;
+    white-space: nowrap;
+  }
+  .role {
+    margin-top: 4px;
+    font-size: clamp(15px, 4.2vw, 18px);
+    font-weight: 500;
+    color: var(--text);
+  }
+  .company {
+    margin-top: 6px;
+    font-size: clamp(11px, 3vw, 12.5px);
+    font-weight: 600;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .body { padding: var(--sp-md) var(--sp-md) 0; }
+
+  /* ── Save contact ── */
+  .save-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: clamp(14px, 4vw, 17px) var(--sp-md);
+    border-radius: 999px;
+    background: linear-gradient(100deg, var(--navy) 0%, var(--blue) 45%, #4a8fd8 80%, var(--sky) 100%);
+    color: #fff;
+    text-decoration: none;
+    font-size: clamp(16px, 4.5vw, 19px);
+    font-weight: 600;
+    box-shadow: 0 10px 26px rgba(46,48,146,0.32);
+    transition: transform 0.15s, filter 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .save-btn:active { transform: scale(0.98); filter: brightness(1.06); }
+  .save-btn .ic {
+    width: clamp(34px, 9.5vw, 40px);
+    height: clamp(34px, 9.5vw, 40px);
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .save-btn .ic svg { width: 56%; height: 56%; }
+
+  /* ── Quick actions ── */
+  .quick {
+    display: flex;
+    justify-content: space-between;
+    gap: 4px;
+    margin: var(--sp-md) 0;
+  }
+  .quick a, .quick button {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .quick .circle {
+    width: var(--icon-size);
+    height: var(--icon-size);
+    border-radius: 50%;
+    background: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 18px rgba(51,78,161,0.28);
+    transition: transform 0.15s, background 0.15s;
+  }
+  .quick .circle svg { width: var(--icon-svg); height: var(--icon-svg); }
+  .quick a:active .circle, .quick button:active .circle { transform: scale(0.9); background: var(--navy); }
+  .quick .lbl {
+    font-size: clamp(11.5px, 3.2vw, 13.5px);
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  /* ── Contact rows ── */
+  .rows { display: flex; flex-direction: column; gap: 10px; margin-bottom: var(--sp-lg); }
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: clamp(12px, 3.5vw, 15px) clamp(12px, 3.5vw, 16px);
+    border-radius: 16px;
+    background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 2px 10px rgba(35,31,32,0.04);
+    color: var(--text);
+    text-decoration: none;
+    min-width: 0;
+    transition: border-color 0.15s, transform 0.15s, background 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .row:active { transform: scale(0.99); border-color: var(--blue); background: #f6f8fd; }
+  .row .ri {
+    width: clamp(36px, 10vw, 42px);
+    height: clamp(36px, 10vw, 42px);
+    border-radius: 50%;
+    background: var(--blue);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .row .ri svg { width: 50%; height: 50%; }
+  .row .rt { flex: 1; min-width: 0; overflow: hidden; container-type: inline-size; }
+  .row .rt b {
+    display: block;
+    font-size: clamp(13.5px, 3.9vw, 15.5px);
+    font-size: min(15.5px, calc(100cqw / 13.4));   /* the domain (~13em) always fits on its line */
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .nw { white-space: nowrap; }   /* keep "simplymove-transport.ch" whole; wrap only after @ or www. */
+  .row .rt small {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 1px;
+  }
+  .chev { width: 14px; height: 14px; flex-shrink: 0; }
+  @media (max-width: 380px) { .row .chev { display: none; } .row { gap: 12px; } }
+
+  /* ── Footer: black band under a ribbon, like the card's bottom corner ── */
+  .bottom { margin-top: auto; line-height: 0; }
+  .bottom .wave { height: clamp(56px, 16vw, 80px); margin: 0 0 -1px; }
+  .foot {
+    background: var(--ink);
+    text-align: center;
+    padding: 4px var(--sp-md) calc(clamp(20px, 6vw, 30px) + env(safe-area-inset-bottom, 0px));
+    line-height: 1.4;
+  }
+  .foot img { width: min(46%, 190px); height: auto; display: inline-block; }
+  .foot a.site {
+    display: block;
+    margin-top: 8px;
+    color: #c9cfdc;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 0.3px;
+  }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed;
+    left: 50%; bottom: 28px;
+    transform: translate(-50%, 20px);
+    background: var(--ink);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, transform 0.2s;
+    z-index: 50;
+    box-shadow: 0 8px 26px rgba(0,0,0,0.3);
+    max-width: calc(100vw - 32px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* ── Entrance ── */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  .who      { animation: fadeUp 0.45s ease both; }
+  .save-btn { animation: fadeUp 0.45s 0.08s ease both; }
+  .quick    { animation: fadeUp 0.45s 0.14s ease both; }
+  .rows     { animation: fadeUp 0.45s 0.20s ease both; }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ── HEADER ── -->
+  <div class="top">
+    <a class="logo" href="https://www.simplymove-transport.ch/" target="_blank" rel="noopener">
+      <img src="../assets/simplymove-logo.png" alt="Simply Move – Transport &amp; Service" width="1000" height="562">
+    </a>
+  </div>
+  <svg class="wave" viewBox="0 0 480 96" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="rib" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#2e3092"/>
+        <stop offset="0.28" stop-color="#6ecff6"/>
+        <stop offset="0.62" stop-color="#3b62b8"/>
+        <stop offset="1" stop-color="#2e3092"/>
+      </linearGradient>
+    </defs>
+    <path d="M0 36 C 90 30, 150 88, 260 80 C 360 72, 420 30, 480 4 L480 34 C 420 62, 360 98, 260 96 C 150 94, 80 58, 0 62 Z" fill="url(#rib)"/>
+    <path d="M0 0 H480 V4 C 420 30, 360 72, 260 80 C 150 88, 90 30, 0 36 Z" fill="#231f20"/>
+  </svg>
+
+  <!-- ── IDENTITY ── -->
+  <section class="who">
+    <div class="photo"><img src="riaz-ahmad.jpg" alt="Riaz Ahmad" width="512" height="512"></div>
+    <h1 class="name">Riaz Ahmad</h1>
+    <p class="role">Fondateur Et Directeur</p>
+    <p class="company">Simply Move · Transport &amp; Service</p>
+  </section>
+
+  <div class="body">
+
+    <!-- ── SAVE CONTACT ── -->
+    <a class="save-btn" href="riaz-ahmad.vcf" download="Riaz-Ahmad.vcf">
+      <span class="ic" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <circle cx="9" cy="8" r="3.5" stroke="#fff" stroke-width="1.8"/>
+          <path d="M2.5 19c0-3.6 2.9-6.5 6.5-6.5s6.5 2.9 6.5 6.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M17.5 9h4M19.5 7v4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+      Enregistrer le contact
+    </a>
+
+    <!-- ── QUICK ACTIONS ── -->
+    <nav class="quick" aria-label="Actions rapides">
+      <a href="tel:+41775028097">
+        <span class="circle"><svg viewBox="0 0 24 24" fill="none"><path d="M5 3h4l2 5-2.5 2c1.2 2.4 3 4.2 5.4 5.4L16 13l5 2v4a2 2 0 01-2 2C8.6 21 3 15.4 3 5a2 2 0 012-2z" fill="#fff"/></svg></span>
+        <span class="lbl">Appeler</span>
+      </a>
+      <a href="mailto:riaz@simplymove-transport.ch">
+        <span class="circle"><svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="2.5" fill="#fff"/><path d="M3.5 7.5l8.5 6 8.5-6" stroke="#334ea1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="lbl">E-mail</span>
+      </a>
+      <a href="https://www.simplymove-transport.ch/" target="_blank" rel="noopener">
+        <span class="circle"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="2"/><ellipse cx="12" cy="12" rx="3.8" ry="9" stroke="#fff" stroke-width="1.6"/><path d="M3 12h18M4.5 8h15M4.5 16h15" stroke="#fff" stroke-width="1.6"/></svg></span>
+        <span class="lbl">Site web</span>
+      </a>
+      <a href="https://www.google.com/maps/search/?api=1&amp;query=Chemin+du+Rh%C3%B4ne+50b%2C+1926+Fully%2C+Switzerland" target="_blank" rel="noopener">
+        <span class="circle"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6.6 7-12.2A7 7 0 005 9.8C5 15.4 12 22 12 22z" fill="#fff"/><circle cx="12" cy="9.6" r="2.6" fill="#334ea1"/></svg></span>
+        <span class="lbl">Itinéraire</span>
+      </a>
+      <button type="button" id="shareBtn">
+        <span class="circle"><svg viewBox="0 0 24 24" fill="none"><circle cx="18" cy="5" r="3" fill="#fff"/><circle cx="6" cy="12" r="3" fill="#fff"/><circle cx="18" cy="19" r="3" fill="#fff"/><path d="M8.6 10.7l6.8-4M8.6 13.3l6.8 4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <span class="lbl">Partager</span>
+      </button>
+    </nav>
+
+    <!-- ── CONTACT ROWS ── -->
+    <div class="rows">
+      <a class="row" href="tel:+41775028097">
+        <span class="ri"><svg viewBox="0 0 24 24" fill="none"><path d="M5 3h4l2 5-2.5 2c1.2 2.4 3 4.2 5.4 5.4L16 13l5 2v4a2 2 0 01-2 2C8.6 21 3 15.4 3 5a2 2 0 012-2z" fill="#fff"/></svg></span>
+        <span class="rt"><small>Téléphone</small><b>0041 77 502 80 97</b></span>
+        <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#334ea1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="row" href="mailto:riaz@simplymove-transport.ch">
+        <span class="ri"><svg viewBox="0 0 24 24" fill="none"><rect x="2.5" y="5" width="19" height="14" rx="2.5" stroke="#fff" stroke-width="1.8"/><path d="M3.5 7.5l8.5 6 8.5-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="rt"><small>E-mail</small><b>riaz@<wbr><span class="nw">simplymove-transport.ch</span></b></span>
+        <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#334ea1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="row" href="https://www.simplymove-transport.ch/" target="_blank" rel="noopener">
+        <span class="ri"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="2"/><ellipse cx="12" cy="12" rx="3.8" ry="9" stroke="#fff" stroke-width="1.6"/><path d="M3 12h18M4.5 8h15M4.5 16h15" stroke="#fff" stroke-width="1.6"/></svg></span>
+        <span class="rt"><small>Site web</small><b>www.<wbr><span class="nw">simplymove-transport.ch</span></b></span>
+        <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#334ea1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="row" href="https://www.google.com/maps/search/?api=1&amp;query=Chemin+du+Rh%C3%B4ne+50b%2C+1926+Fully%2C+Switzerland" target="_blank" rel="noopener">
+        <span class="ri"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-6.6 7-12.2A7 7 0 005 9.8C5 15.4 12 22 12 22z" fill="#fff"/><circle cx="12" cy="9.6" r="2.6" fill="#334ea1"/></svg></span>
+        <span class="rt"><small>Adresse</small><b>Chemin du Rhône 50b<br>1926 Fully VS</b></span>
+        <svg class="chev" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="#334ea1" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="bottom">
+    <svg class="wave" viewBox="0 0 480 80" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="rib2" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#2e3092"/>
+          <stop offset="0.55" stop-color="#3b62b8"/>
+          <stop offset="1" stop-color="#6ecff6"/>
+        </linearGradient>
+      </defs>
+      <path d="M0 80 C 120 70, 200 30, 320 26 C 400 23, 450 36, 480 44 L480 20 C 440 6, 380 0, 310 6 C 200 16, 120 60, 0 66 Z" fill="url(#rib2)"/>
+      <path d="M0 80 C 120 70, 200 30, 320 26 C 400 23, 450 36, 480 44 V80 Z" fill="#231f20"/>
+    </svg>
+    <div class="foot">
+      <img src="../assets/simplymove-logo.png" alt="Simply Move – Transport &amp; Service" width="1000" height="562">
+      <a class="site" href="https://www.simplymove-transport.ch/" target="_blank" rel="noopener">www.simplymove-transport.ch</a>
+    </div>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite">Lien copié</div>
+
+<script>
+  (function () {
+    var btn = document.getElementById('shareBtn');
+    var toast = document.getElementById('toast');
+    var data = {
+      title: 'Riaz Ahmad – Simply Move',
+      text: 'Riaz Ahmad · Fondateur Et Directeur · Simply Move Transport & Service',
+      url: location.href
+    };
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(showToast.t);
+      showToast.t = setTimeout(function () { toast.classList.remove('show'); }, 1800);
+    }
+    function copy() {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(data.url).then(function () { showToast('Lien copié'); },
+          function () { showToast(data.url); });
+      } else {
+        var ta = document.createElement('textarea');
+        ta.value = data.url; document.body.appendChild(ta); ta.select();
+        try { document.execCommand('copy'); showToast('Lien copié'); } catch (e) { showToast(data.url); }
+        document.body.removeChild(ta);
+      }
+    }
+    btn.addEventListener('click', function () {
+      if (navigator.share) {
+        navigator.share(data).catch(function (e) { if (e && e.name !== 'AbortError') copy(); });
+      } else {
+        copy();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
